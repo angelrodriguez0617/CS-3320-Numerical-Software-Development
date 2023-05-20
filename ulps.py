@@ -8,6 +8,22 @@ prec = sys.float_info.mant_dig
 inf = math.inf
 # print(f'base: {base}\neps: {eps}\nprec: {prec}\ninf: {inf}') 
 
+def get_exp(num):
+    '''Get the exponent of a specified base using a given number'''
+    exp = 0
+    if num == 1:
+        return exp
+    elif num > 1: # Exponent is positive
+        while num >= base:
+            num /= base
+            exp += 1
+    else: # Exponent is negative
+        lub = 1
+        while lub > num:
+            lub /= base
+            exp -= 1
+    return exp
+
 def ulps(x,y):
     '''Takes two floating point parameters, x and y, and returns the number of ulps (floating-point intervals) between x and y'''
 
@@ -26,16 +42,10 @@ def ulps(x,y):
         x, y = y, x
 
     '''Find the exponents for both input parameters in the machine base (base).'''
-    exp_x = 0
-    exp_y = 0
-    while x >= base:
-        x /= base
-        exp_x += 1
-    while y >= base:
-        y /= base
-        exp_y += 1
+    exp_x = get_exp(x)
+    exp_y = get_exp(y)
     # print(f'exp_x: {exp_x}')
-    # print(f'exp_x: {exp_y}')
+    # print(f'exp_y: {exp_y}')
 
     '''Examine the exp for both parameter:'''
     if exp_x == exp_y: # If they are the same
@@ -59,6 +69,9 @@ def ulps(x,y):
         while exp_current != exp_y:
             intervals += ((base**(exp_current+1)) - (base**(exp_current))) / (eps*(base**exp_current))
             exp_current += 1
+    
+    # We do not want to return numbers in scientific notation
+    intervals = f"{intervals:.0f}"
     return intervals
 
 print(ulps(-1.0, -1.0000000000000003)) # 1
