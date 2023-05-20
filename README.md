@@ -1,2 +1,2 @@
-# CS-3320-Numerical-Software-Development
-Teaches the tools necessary for modern scientific computation. Covers error analysis, numerical stability, IEEE floating-point standards, testing of numerical algorithms, calculation of elementary functions, roots of equations, solutions of linear systems, numerical integration and differentiation, interpolation, approximation, Monte Carlo methods.
+# CS 3320 - Numerical Software Development
+Teaches the tools necessary for modern scientific computation. Covers computer representation of floating-point numbers, error analysis and numerical stability, IEEE floating-point standards, testing of numerical algorithms, calculation of elementary functions, roots of equations, solutions of linear systems, numerical integration and differentiation, interpolation and approximation, Monte Carlo methods. Lab access fee of $45 for computers applies. Canvas Course Mats $45/McGraw applies.
